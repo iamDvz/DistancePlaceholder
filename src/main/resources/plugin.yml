@@ -1,0 +1,8 @@
+name: DistancePlaceholder
+version: '${version}'
+main: ru.iamdvz.distanceplaceholder.DistancePlaceholder
+api-version: 1.16
+depend: [ PlaceholderAPI ]
+authors: [ iamDvz ]
+description: distance placeholder
+website: iamDvz.ru
