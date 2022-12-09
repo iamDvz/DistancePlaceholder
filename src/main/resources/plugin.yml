@@ -6,3 +6,12 @@ depend: [ PlaceholderAPI ]
 authors: [ iamDvz ]
 description: distance placeholder
 website: iamDvz.ru
+commands:
+  distancepl:
+    aliases: [distancepl]
+    description: Distancepl command
+
+permissions:
+  distanceplaceholder.admin:
+    description: needed for admin commands
+    default: op

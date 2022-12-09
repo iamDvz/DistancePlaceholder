@@ -33,20 +33,18 @@ public class DistancePlaceholderPlaceholders extends PlaceholderExpansion {
     }
 
     public String onRequest(OfflinePlayer p, @NotNull String identifier) {
-        if (identifier.equals("fromCords:")) {
-            if (identifier.contains("(") && identifier.contains(")") && identifier.contains(",")) {
-                return String.valueOf(
-                        CoordinateUtils.getLengthFromTwoPoints(
-                                ((Player)p).getLocation(),
-                                GetterUtils.getVectorFromString(
-                                        GetterUtils.getFromBracket(identifier))));
-            }
-        }
-        if (identifier.equals("fromConfig:")) {
+        if (identifier.split(":")[0].equals("fromCords")) {
             return String.valueOf(
                     CoordinateUtils.getLengthFromTwoPoints(
                             ((Player)p).getLocation(),
-                            Objects.requireNonNull(DistancePlaceholder.getInstance().getConfig().getVector(identifier.split(":")[1]))));
+                            Objects.requireNonNull(GetterUtils.getVectorFromString(
+                                    GetterUtils.getFromBracket(identifier)))));
+
+        }
+        if (identifier.split(":")[0].equals("fromConfig")) {
+            return String.valueOf(
+                    CoordinateUtils.getLengthFromTwoPoints(
+                            ((Player)p).getLocation(),GetterUtils.getVectorFromString(DistancePlaceholder.getInstance().getConfig().getString(identifier.split(":")[1]))));
         }
         return null;
     }
